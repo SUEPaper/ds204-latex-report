@@ -18,7 +18,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{todonotes}
 
-\geometry{a4paper,top=2.54cm,bottom=2.54cm,left=3.17cm,right=3.17cm}
+\geometry{a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm}
 
 \unimathsetup{math-style=ISO, bold-style=ISO}
 
@@ -103,28 +103,43 @@
 }
 
 \math@define@key{
-  title = {
-    default = {《数据分析实践》},
-  },
-  sub-title = {
-    default = {实习报告},
-    name = sub@title,
-  },
-  student = {
-    default = {张三}
+  student-name = {
+    default = {某同学},
+    name    = student@name
   },
   student-id = {
     default = {2022****},
-    name    = student@id,
+    name    = student@id
+  },
+  student-class = {
+    default = {2022****},
+    name    = student@class
   },
   institution = {
-    default = {数理学院数学系},
+    default = {数理学院}
   },
   discipline = {
-    default = {信息与计算科学专业 2022 级},
+    default = {信息与计算科学专业}
   },
-  date = {
-    default = {2023 年 2 月 8 日},
+  course-number = {
+    default = {2812097.01},
+    name    = course@number
+  },
+  course-name = {
+    default = {数据分析实验},
+    name    = course@name
+  },
+  teacher = {
+    default = {某教授}
+  },
+  year = {
+    default = {2023}
+  },
+  month = {
+    default = {11}
+  },
+  day = {
+    default = {27}
   },
 }
 
@@ -157,6 +172,8 @@
 % 黑体
 \renewcommand{\heiti}{\CJKfontspec[Path=fonts/,AutoFakeBold]{simhei.ttf}}
 \setCJKsansfont[Path=fonts/]{simhei.ttf}
+\newcommand{\kaiti}{\CJKfontspec[Path=fonts/,AutoFakeBold]{kaiti.ttf}}
+\renewcommand{\fangsong}{\CJKfontspec[Path=fonts/,AutoFakeBold]{fangsong.ttf}}
 % \newcommand{\黑体}{\heiti}
 % % 其他
 % \newcommand{\仿宋}{\fangsong}
@@ -198,7 +215,7 @@
     name = {,.{ } },
     number = \arabic{subsection},
     % 黑体四号
-    format+ = \zihao{4} \songti \raggedright,
+    format+ = \zihao{4} \heiti \raggedright,
 		beforeskip = 1.0ex plus 0.2ex minus .2ex,
 		afterskip = 1.0ex plus 0.2ex minus .2ex,
 		aftername = \hspace{0pt}
@@ -224,42 +241,67 @@
 
 
 % 页眉
-\pagestyle{fancy}
-\lhead{课程名称：数据分析实践}
-\chead{姓名：\math@student}
-\rhead{学号：\math@student@id}
-\setlength{\headheight}{13pt}
+\pagestyle{empty}
+% \lhead{课程名称：数据分析实践}
+% \chead{姓名：\math@student}
+% \rhead{学号：\math@student@id}
+% \setlength{\headheight}{13pt}
 
 
 % 封面
 \newcommand{\makecover}{
+  \newgeometry{%
+    top=2.5cm,bottom=2.5cm,
+    left=2.5cm,right=2.5cm
+  }
+  \zihao{4}
+  \songti
   \begin{center}
-    \heiti
-    \bfseries\zihao{-0}{\math@title}\\
-    \vskip 30pt
-    \bfseries\songti\zihao{1}{\math@sub@title} \\
-    \vskip 60pt
+    {\kaiti \bfseries\zihao{0} 上海电力大学 } \\
+    \vskip 20pt
+    {\kaiti \bfseries\zihao{-0} 实践课程报告 } \\
+    \vskip 25pt
     \begin{center}
       \includegraphics[width=0.4\linewidth]{shiep-logo}
     \end{center}
-	\vskip 60pt
+	  \vskip 20pt
     \begin{center}
-		\begin{large}
-			\zihao{-3}
-			\begin{tabular}{rc}
-				院\qquad 系：& \math@institution\\
-						\cline{2-2}\\
-				专业年级：& \math@discipline\\
-				\cline{2-2}\\
-				姓\qquad 名：& \math@student\\
-				\cline{2-2}\\
-				学\qquad 号：&\hspace{2.5cm} \math@student@id \hspace{2.5cm} \\
-				\cline{2-2}
-			\end{tabular}
-		\end{large}
-	\end{center}
-    \vskip 60pt
-    \zihao{4}{\math@date}
+      \def\arraystretch{2}
+      % \zihao{4}
+      % \songti
+      \begin{large}
+        \begin{tabular}{rcrcrc}
+          学 \qquad 院：& \multicolumn{5}{c}{\math@institution}\\
+          \cline{2-6}
+          专 \qquad 业：& \multicolumn{5}{c}{\math@discipline} \\
+          \cline{2-6}
+          课程编号： & \multicolumn{2}{c}{\math@course@number} & 课程名称： & \multicolumn{2}{c}{\math@course@name} \\
+          \cline{2-3} \cline{5-6}
+          学生姓名： & \math@student@name & 学号：& \math@student@id & 班级：& \math@student@class \\
+          \cline{2-2}         \cline{4-4}        \cline{6-6}
+          指导老师：& \multicolumn{5}{c}{\math@teacher} \\
+          \cline{2-6}
+        \end{tabular}
+      \end{large}
+	  \end{center}
+    \vskip 10pt
+    \underline{\hspace{10pt}\math@year\hspace{10pt}}年
+    \underline{\hspace{10pt}\math@month\hspace{10pt}}月
+    \underline{\hspace{10pt}\math@day\hspace{10pt}}日
+    \vskip 20pt
+    \begin{center}
+      \begin{large}
+        \begin{tabular}{rp{5cm}}
+          成绩：&  \\
+          \cline{2-2}
+        \end{tabular}
+      \end{large}
+	  \end{center}
+    \framebox{
+      \begin{minipage}[t][3cm][t]{16cm}
+        {\zihao{5} \fangsong 教师评语：}
+      \end{minipage}
+    }
   \end{center}
   \thispagestyle{empty}
   \newpage
