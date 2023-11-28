@@ -3,6 +3,7 @@
 [2023/02/08 v0.2 Standard LaTeX Template for math Report]
 \LoadClass[UTF8,a4paper]{ctexart}
 \RequirePackage{graphicx}
+\RequirePackage{caption}
 \RequirePackage{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
@@ -193,42 +194,36 @@
     % format用于设置章节标题全局格式，作用域为标题和编号
 		% 字号为小三，字体为黑体，左对齐
 		% +号表示在原有格式下附加格式命令
-		format+ = \zihao{-3} \heiti \raggedright,
+		format+ =\bfseries \zihao{-3} \heiti \raggedright,
 		% name用于设置章节编号前后的词语
 		% 前、后词语用英文状态下,分开
 		% 如果没有前或后词语可以不填
 		name = {,、},
 		% number用于设置章节编号数字输出格式
 		% 输出section编号为中文
-		number = 实验\chinese{section},
-		% beforeskip用于设置章节标题前的垂直间距
-		% ex为当前字号下字母x的高度
-		% 基础高度为1.0ex，可以伸展到1.2ex，也可以收缩到0.8ex
-		beforeskip = 1.0ex plus 0.2ex minus .2ex,
-		% afterskip用于设置章节标题后的垂直间距
-		afterskip = 1.0ex plus 0.2ex minus .2ex,
-		% aftername用于控制编号和标题之间的格式
+		number = \chinese{section},
 		% \hspace用于增加水平间距
 		aftername = \hspace{0pt}
   },
   subsection = {
-    name = {,.{ } },
+    name = {,.},
     number = \arabic{subsection},
     % 黑体四号
-    format+ = \zihao{4} \heiti \raggedright,
-		beforeskip = 1.0ex plus 0.2ex minus .2ex,
-		afterskip = 1.0ex plus 0.2ex minus .2ex,
-		aftername = \hspace{0pt}
+    format+ =  \zihao{4} \heiti \raggedright ,
+		aftername = \hspace{0.5em}
   },
   subsubsection = {
-    name = {,.{ } },
-    number = \alph{subsubsection},
+    name = {, },
+    number = （\arabic{subsubsection}）,
     % 黑体小四
-    format+ = \zihao{-4} \songti \raggedright,
-		beforeskip = 1.0ex plus 0.2ex minus .2ex,
-		afterskip = 1.0ex plus 0.2ex minus .2ex,
+    format+ = \zihao{-4} \heiti \raggedright,
 		aftername = \hspace{0pt}
   },
+  paragraph = {
+    name = {, },
+    number = \textcircled{\arabic{paragraph}},
+    format+ = \zihao{-4} \heiti \raggedright,
+  }
 }
 
 % 设置图片文件夹路径
