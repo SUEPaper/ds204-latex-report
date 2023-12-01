@@ -249,9 +249,9 @@
     top=2.5cm,bottom=2.5cm,
     left=2.5cm,right=2.5cm
   }
-  \zihao{4}
   \songti
   \begin{center}
+    \zihao{4}
     {\kaiti \bfseries\zihao{0} 上海电力大学 } \\
     \vskip 20pt
     {\kaiti \bfseries\zihao{-0} 实践课程报告 } \\
